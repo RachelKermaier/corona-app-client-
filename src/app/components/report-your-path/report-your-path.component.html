@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form [formGroup]="LocationForm">
+        <h1>Report your Path </h1>
+        <br>
+        <input class="input" type="text" placeholder="Enter Id" pInputText  required id="id" formControlName="PatientID"
+            (change)="getLocationById()">
+        <br>
+        <br>
+        <!-- <table class="table table-striped table-hover">
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>City</th>
+            <th>Address</th>
+            <th></th>
+            <tr *ngFor="let location of locationsList">
+                <td>{{location.startDate | date}}</td>
+                <td>{{location.endDate | date}}</td>
+                <td>{{location.city}}</td>
+                <td>{{location.address}}</td>
+            </tr>
+        </table> -->
+        <p-table [value]="locationsList" styleClass="p-datatable-gridlines" responsiveLayout="scroll">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>City</th>
+                    <th>Address</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-location>
+                <tr>
+                    <td>{{location.startDate | date}}</td>
+                    <td>{{location.endDate | date}}</td>
+                    <td>{{location.city}}</td>
+                    <td>{{location.address}}</td>
+                </tr>
+            </ng-template>
+        </p-table>
+        <br>
+        <input class="input" type="datetime-local" placeholder="Enter Start Date" id="startDate"
+            formControlName="StartDate" pInputText >
+        <input class="input" type="datetime-local" placeholder="Enter End Date" id="endDate" formControlName="EndDate" pInputText >
+        <input class="input" type="text" placeholder="Enter City" id="city" formControlName="City" pInputText >
+        <input class="input" type="text" placeholder="Enter Location" id="location" formControlName="Address" pInputText >
+        <br>
+        <br>
+        <button pButton id="add" type="submit" class="btn btn-primary" (click)="AddLocation()">Add Location</button>
+    </form>
+</body>
+
+</html>
